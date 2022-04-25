@@ -1,13 +1,21 @@
 (ns zizek-quotes.core
     (:require
       [reagent.core :as r]
-      [reagent.dom :as d]))
+      [reagent.dom :as d]
+      [zizek-quotes.state :as state]))
 
 ;; -------------------------
 ;; Views
 
 (defn home-page []
-  [:div [:img {:src "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Slavoj_%C5%BDi%C5%BEek_2015.jpg/1024px-Slavoj_%C5%BDi%C5%BEek_2015.jpg"}]])
+  (let [{:keys [txt url] :as quotes}
+        (rand-nth (vals @state/quotes))]
+    [:div
+     [:p [:h2 txt]]
+     [:img {:src url}]]))
+
+
+
 
 ;; -------------------------
 ;; Initialize app
