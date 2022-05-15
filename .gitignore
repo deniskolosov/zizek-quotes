@@ -16,4 +16,3 @@ pom.xml.asc
 /.env
 /node_modules
 /.shadow-cljs
-TODOs.org
