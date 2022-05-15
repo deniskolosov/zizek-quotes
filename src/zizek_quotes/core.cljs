@@ -1,23 +1,19 @@
 (ns zizek-quotes.core
     (:require
-      [reagent.core :as r]
-      [reagent.dom :as d]
-      [zizek-quotes.state :as state]))
+     [reagent.dom :as d]
+     [reagent.core :as r]
+     [zizek-quotes.quote :refer [quote]]))
 
 ;; -------------------------
 ;; Views
 
 (defn home-page []
-  (let [{:keys [txt url] :as quotes}
-        (rand-nth (vals @state/quotes))]
-    [:div
-     [:p [:h2 txt]]
-     [:img {:src url}]]))
+  [:div [quote]
+  [:input {:type "button"
+           :value "Next quote!"
+           :on-click #(.reload js/window.location)}]])
 
 
-
-
-;; -------------------------
 ;; Initialize app
 
 (defn mount-root []
